@@ -1,5 +1,7 @@
 <h3>List of Menu Categories</h3>
 
+<h5>Results: {{categories.length}}</h5>
+
 <ul>
   <li ng-repeat="cat in $ctrl.categories">
     {{cat.id}} {{cat.short_name}} {{ cat.name }}
