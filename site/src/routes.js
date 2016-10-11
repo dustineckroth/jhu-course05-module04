@@ -23,6 +23,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   .state('categories', {
     url: '/categories',
     templateUrl: 'templates/categories.template.html',
+    controller: 'CategoriesController as catCtrl',
     resolve: {
       categories: ['MenuDataService', function (MenuDataService) {
         return MenuDataService.getAllCategories();
@@ -32,11 +33,12 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 
   // Items pages
   .state('items', {
-    url: '/categories/{categoryShortName}',
+    url: '/items/{categoryShortName}',
     templateUrl: 'templates/items.template.html',
+    controller: 'ItemsController as itemsCtrl',
     resolve: {
-      items: ['MenuDataService', function (MenuDataService) {
-        return MenuDataService.getItemsForCategory(categoryShortName);
+      data: ['$stateParams', 'MenuDataService', function ($stateParams, MenuDataService) {
+        return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
       }]
     }
   })

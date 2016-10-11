@@ -1,0 +1,14 @@
+<h3>List of {{itemsCtrl.category.name}} Items</h3>
+
+<button ui-sref="categories">Back to Category List</button>
+
+<h5>Results: {{itemsCtrl.items.length}}</h5>
+
+<ul>
+  <li ng-repeat="item in itemsCtrl.items">
+    <b>{{item.name}} ({{item.short_name}})</b>
+    <br/>{{item.description}}
+    <br/>Large: ${{item.price_large.toFixed(2)}}
+    <span ng-if="item.price_small!=null"><br/>Small: ${{item.price_small.toFixed(2)}}</span>
+  </li>
+</ul>

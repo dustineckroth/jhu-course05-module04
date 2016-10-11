@@ -10,18 +10,19 @@ MenuDataService.$inject = ['$http'];
 
     service.getAllCategories = function() {
 
-      return $http.get('//davids-restaurant.herokuapp.com/categories.json')
+      return $http.get('https://davids-restaurant.herokuapp.com/categories.json')
                   .then(function(result) {
         console.log(result);
-        console.log(result.data);
         return result.data;
       });
     };
 
     service.getItemsForCategory = function(categoryShortName) {
 
-      return $http.get('//davids-restaurant.herokuapp.com/categories.json',
-                  { "params": { "category": categoryShortName }})
+      return $http({ url: 'https://davids-restaurant.herokuapp.com/menu_items.json',
+                     method: 'GET',
+                     params: { category: categoryShortName }
+                  })
                   .then(function(result) {
         console.log(result);
         return result.data;

@@ -1,11 +1,12 @@
 <h3>List of Menu Categories</h3>
 
-<h4>Why isn't this working?</h4>
-
-<h5>Results: {{categories.length}}</h5>
+<h5>Results: {{catCtrl.categories.length}}</h5>
 
 <ul>
-  <li ng-repeat="cat in $ctrl.categories">
-    {{cat.id}} {{cat.short_name}} {{ cat.name }}
+  <li ng-repeat="cat in catCtrl.categories"
+      ui-sref="items({categoryShortName: cat.short_name, categoryName: cat.name})">
+    <button>{{cat.name}} ({{cat.short_name}})</button>
   </li>
 </ul>
+
+<ui-view></ui-view>
