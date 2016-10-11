@@ -13,9 +13,9 @@ MenuDataService.$inject = ['$http'];
       return $http.get('//davids-restaurant.herokuapp.com/categories.json')
                   .then(function(result) {
         console.log(result);
-        return result;
+        return result.data;
       });
-    }
+    };
 
     service.getItemsForCategory = function(categoryShortName) {
 
@@ -23,7 +23,7 @@ MenuDataService.$inject = ['$http'];
                   { "params": { "category": categoryShortName }})
                   .then(function(result) {
         console.log(result);
-        return result;
+        return result.data;
       });
     }
   }
