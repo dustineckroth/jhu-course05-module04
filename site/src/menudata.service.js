@@ -13,6 +13,7 @@ MenuDataService.$inject = ['$http'];
       return $http.get('//davids-restaurant.herokuapp.com/categories.json')
                   .then(function(result) {
         console.log(result);
+        console.log(result.data);
         return result.data;
       });
     };
